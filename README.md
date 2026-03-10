@@ -1,5 +1,7 @@
 # latex_magic (personal LaTeX snippet collection)
 
+[![LaTeX Package CI](https://github.com/The-JC/latex_magic/actions/workflows/latex-package-ci.yml/badge.svg)](https://github.com/The-JC/latex_magic/actions/workflows/latex-package-ci.yml)
+
 `latex_magic` is your personal repository of reusable LaTeX snippets: macros, styles, and topic-specific subpackages.
 
 ## Philosophy
