@@ -20,7 +20,7 @@
 %   none     -> load nothing
 
 \makeatletter
-\edef\lm@oldinputpath{\input@path}
+\@ifundefined{input@path}{\def\lm@oldinputpath{}}{\edef\lm@oldinputpath{\input@path}}
 \def\input@path{{styles/}{external/}{external/styles/}\lm@oldinputpath}
 \makeatother
 
