@@ -1,0 +1,33 @@
+name: LaTeX Package CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-loadability:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        testfile:
+          - tests/load_wirelesscomm.tex
+          - tests/load_wc_macros.tex
+          - tests/load_wc_listings.tex
+          - tests/load_none.tex
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-latex-base texlive-latex-recommended texlive-fonts-recommended
+
+      - name: Compile smoke test
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error ${{ matrix.testfile }}
+
+      - name: Cleanup auxiliary files
+        if: always()
+        run: latexmk -c ${{ matrix.testfile }}

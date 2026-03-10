@@ -47,3 +47,16 @@ Backward-compatible aliases:
 2. Add styles/subpackages in `styles/<topic>.sty`
 3. Expose the module through options in `latex_magic.sty`
 4. Load the module from documents via `\usepackage[<module>]{latex_magic}`
+
+## GitHub CI smoke tests
+
+This repository includes a GitHub Actions workflow at `.github/workflows/latex-package-ci.yml`.
+
+It compiles minimal test documents from `tests/` to verify package loadability for:
+
+- `wirelesscomm`
+- `wc-macros`
+- `wc-listings`
+- `none`
+
+The CI job is a smoke test to ensure package options resolve and compile successfully on push and pull requests.
