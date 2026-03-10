@@ -1,0 +1,30 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\usepackage[wirelesscomm]{latex_magic}
+
+\title{latex\_magic Example}
+\author{CI Smoke Example}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+This short document validates loading of the \texttt{latex\_magic} package.
+
+\section*{Macros}
+\[
+f(x) = \nexp{x}{2} + \pexp{x}{2}
+\]
+
+\section*{Listings}
+\begin{lstlisting}[style=MatlabStyle]
+snrDb = 0:2:20;
+ber = qfunc(sqrt(10.^(snrDb/10)));
+\end{lstlisting}
+
+\end{document}
