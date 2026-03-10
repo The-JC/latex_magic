@@ -1,0 +1,52 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{latex_magic}[2026/03/10 Personal LaTeX snippet collection]
+
+% latex_magic: top-level package for a personal collection of LaTeX snippets.
+%
+% Core design: opt-in modules (load only what a document needs).
+%
+% Recommended usage:
+%   \usepackage[wirelesscomm]{latex_magic}
+%
+% Fine-grained usage:
+%   \usepackage[wc-macros]{latex_magic}
+%   \usepackage[wc-listings]{latex_magic}
+%   \usepackage[wc-macros,wc-listings]{latex_magic}
+%
+% Backward-compatible aliases:
+%   all      -> wirelesscomm
+%   macros   -> wc-macros
+%   listings -> wc-listings
+%   none     -> load nothing
+
+\makeatletter
+\edef\lm@oldinputpath{\input@path}
+\def\input@path{{external/}{external/styles/}\lm@oldinputpath}
+\makeatother
+
+\newif\iflmwirelesscomm
+
+\DeclareOption{wirelesscomm}{\lmwirelesscommtrue}
+
+\DeclareOption{wc-macros}{%
+	\PassOptionsToPackage{macros}{wirelesscomm}%
+	\lmwirelesscommtrue
+}
+
+\DeclareOption{wc-listings}{%
+	\PassOptionsToPackage{listings}{wirelesscomm}%
+	\lmwirelesscommtrue
+}
+
+\DeclareOption{all}{\lmwirelesscommtrue}
+\DeclareOption{macros}{\PassOptionsToPackage{macros}{wirelesscomm}\lmwirelesscommtrue}
+\DeclareOption{listings}{\PassOptionsToPackage{listings}{wirelesscomm}\lmwirelesscommtrue}
+\DeclareOption{none}{}
+
+\ProcessOptions\relax
+
+\iflmwirelesscomm
+\RequirePackage{wirelesscomm}
+\fi
+
+\endinput

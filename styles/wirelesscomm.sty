@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wirelesscomm}[2026/03/10 Wireless communications subpackage]
+
+% wirelesscomm: optional modules for wireless communications documents.
+%
+% Options:
+%   all      -> load macros and listings (default)
+%   macros   -> load only external/macros/communications.tex
+%   listings -> load only matlablisting style
+%   none     -> load neither module
+
+\newif\ifwcmacros
+\newif\ifwclistings
+
+\DeclareOption{macros}{\wcmacrostrue}
+\DeclareOption{listings}{\wclistingstrue}
+\DeclareOption{all}{\wcmacrostrue\wclistingstrue}
+\DeclareOption{none}{}
+
+\ExecuteOptions{all}
+\ProcessOptions\relax
+
+\ifwclistings
+\RequirePackage{matlablisting}
+\fi
+
+\ifwcmacros
+\input{macros/communications.tex}
+\fi
+
+\endinput
