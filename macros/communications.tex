@@ -2,3 +2,51 @@
 \newcommand{\pexp}[2]{\exp\left(\frac{#1}{#2}\right)}
 \newcommand{\qf}[2]{\text{Q}\left(\frac{#1}{#2}\right)}
 \newcommand{\SNR}{\text{SNR}}
+
+\newcommand{\vlaplace}[1][]{\mbox{\setlength{\unitlength}{0.1em}%
+                            \begin{picture}(10,20)%
+                              \put(3,2){\circle{4}}%
+                              \put(3,4){\line(0,1){12}}%
+                              \put(3,18){\circle*{4}}%
+                              \put(10,7){#1}
+                            \end{picture}%
+                           }%
+                     }%
+
+\newcommand{\vLaplace}[1][]{\mbox{\setlength{\unitlength}{0.1em}%
+                            \begin{picture}(10,20)%
+                              \put(3,2){\circle*{4}}%
+                              \put(3,4){\line(0,1){12}}%
+                              \put(3,18){\circle{4}}%
+                              \put(10,7){#1}
+                            \end{picture}%
+                           }%
+                     }%  
+
+\DeclareMathOperator{\EX}{\mathbb{E}}
+
+% \newcommand{\EXop}[2][]{%
+%   \ifx\relax#1\relax
+%     \EX\left\{#2\right\}%
+%   \else
+%     \underbrace{\EX\left\{#2\right\}}_{#1}%
+%   \fi
+% }%
+
+\NewDocumentCommand{\EXop}{ O{} m}{
+  \ifx\relax#1\relax
+    \EX\left\{#2\right\}%
+  \else
+    \underbrace{\EX\left\{#2\right\}}_{#1}%
+  \fi
+}
+
+\newcommand{\RH}{R_\mathbb{H}}
+\newcommand{\CH}{C_\mathbb{H}}
+\newcommand{\dt}{\Delta t}
+\newcommand{\df}{\Delta f}
+
+\NewDocumentCommand{\FourierF}{ O{} O{} m }{\mathop{\mathcal{F}}\limits_{#1}^{#2}\{#3\}}
+
+\DeclareMathOperator*{\argmax}{\arg\,\max}
+\DeclareMathOperator*{\argmin}{\arg\,\min}
